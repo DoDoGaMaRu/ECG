@@ -1,0 +1,19 @@
+# arduino
+SERIAL_PORT = 'COM5'
+BAUDRATE = 9600
+
+# dummy data
+DUMMY_PATH = './resources/ECG2.txt'
+DUMMY_LEN = 16000
+THRESHOLD = 700
+DATA_LEN = 300
+
+# foreground
+TITLE = '데이터 수집기'
+VIEW_ELEMENT = 300
+DATA_RANGE = 0.3
+REFRESH_INTERVAL = 1000
+NOISE_THRESHOLD = 3
+
+# network
+DATA_SEND_URL = 'http://122.46.233.235:58080/test'

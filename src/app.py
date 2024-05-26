@@ -2,7 +2,7 @@ import time
 
 from background import SerialReader
 from config import *
-from foreground import Runner
+from runner import Runner
 from util import MutexManager
 
 
@@ -38,6 +38,8 @@ class App:
             d = self.dummy_data[self.get_current_idx()]
 
         with self.data_lock:
+            if SHOW_REAL_DATA:
+                print(new_data)
             self.data.append(d)
             if DATA_LEN < len(self.data):
                 del self.data[0]

@@ -5,8 +5,8 @@ from scipy.signal import lfilter
 
 
 SCREEN_HEIGHT = 800
-SCREEN_WIDTH = 800
-ENLARGEMENT = 1000
+SCREEN_WIDTH = 1800
+ENLARGEMENT = 500
 
 
 pygame.init()
@@ -20,7 +20,7 @@ blue = (0, 0, 255)
 
 
 data = []
-with open('../resources/ECG2.txt', mode='r') as f:
+with open('./resources/ECG2.txt', mode='r') as f:
     for line in f:
         d = line.split()[0]
         data.append(float(d)*ENLARGEMENT)
@@ -44,7 +44,7 @@ comb = lfilter(b, a, derivative_filter_y)
 data = comb
 
 
-freq = (len(data) // 1000) // 16
+freq = (len(data) // 1000) // 2
 
 running = True
 while running:

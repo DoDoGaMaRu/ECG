@@ -2,6 +2,7 @@ class Palette:
     WHITE = (255, 255, 255)
     RED = (255, 0, 0)
     BLUE = (0, 0, 255)
+    ORANGE = (255,127,0)
     GRAY = (200, 200, 200)
     DARKGRAY = (70, 70, 70)
     BLACK = (0, 0, 0)

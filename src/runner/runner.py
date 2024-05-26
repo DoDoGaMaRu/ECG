@@ -2,7 +2,7 @@ import pygame
 
 from typing import Callable
 
-from .common import Palette, Image
+from .common import Palette
 from .component import Chart
 from .content import Content
 

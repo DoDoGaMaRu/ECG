@@ -10,7 +10,7 @@ class SerialReader:
                  port: str,
                  handler: Callable[[int], None],
                  baudrate: int = 9600,
-                 timeout: int = 1):
+                 timeout: int = 5):
         self.handler = handler
         self.s = Serial(port=port, baudrate=baudrate, timeout=timeout)
 

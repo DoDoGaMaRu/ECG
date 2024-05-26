@@ -1,7 +1,7 @@
 import pygame
 import numpy as np
 
-from foreground.common import Palette, Font
+from runner.common import Palette, Font
 from util.mutex_manager import MutexManager
 
 

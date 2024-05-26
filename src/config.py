@@ -6,13 +6,13 @@ conf.read('./resources/config.ini', encoding='utf-8')
 # SERIAL
 SERIAL_PORT = conf['SERIAL']['SERIAL_PORT']
 BAUDRATE = int(conf['SERIAL']['BAUDRATE'])
+THRESHOLD = int(conf['SERIAL']['THRESHOLD'])
 SAMPLING_RATE = 100
-SHOW_REAL_DATA = False
+SHOW_REAL_DATA = conf.getboolean('SERIAL', 'SHOW_REAL_DATA')
 
 # DUMMY
 DUMMY_PATH = conf['DUMMY']['DUMMY_PATH']
 DUMMY_LEN = int(conf['DUMMY']['DUMMY_LEN'])
-THRESHOLD = int(conf['DUMMY']['THRESHOLD'])
 DATA_LEN = 300
 
 # RUNNER

@@ -2,7 +2,7 @@ import pygame
 
 from typing import Callable
 
-from .common import Palette
+from .common import Palette, Image
 from .component import Chart
 from .content import Content
 
@@ -17,7 +17,10 @@ class Runner:
         self.data = data
         self.event_handlers: [Callable[[pygame.event.Event], None]] = []
 
+        icon = pygame.image.load(Image.main)
+
         pygame.init()
+        pygame.display.set_icon(icon)
         pygame.display.set_caption(title)
         self.screen_width = 800
         self.screen_height = 680

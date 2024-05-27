@@ -11,6 +11,7 @@ class App:
         mm = MutexManager()
         self.data = [0]
         self.data_lock = mm.get('data')
+        self.fast_lock = mm.get('fast')
 
         self.dummy_data = self.road_dummy_data()
         self.serial_reader = SerialReader(
@@ -35,7 +36,10 @@ class App:
     def data_handler(self, new_data) -> None:
         d = 0
         if THRESHOLD < new_data:
-            d = self.dummy_data[self.get_current_idx()]
+            idx = self.get_current_idx()
+            if self.fast_lock.locked():
+                idx = int((idx*1.4) % len(self.dummy_data))
+            d = self.dummy_data[idx]
 
         with self.data_lock:
             if SHOW_REAL_DATA:

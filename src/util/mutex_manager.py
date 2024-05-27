@@ -13,7 +13,7 @@ class MutexManager:
             self.locks = {}
             cls._init = True
 
-    def get(self, name):
+    def get(self, name) -> Lock:
         if name not in self.locks:
             self.locks[name] = Lock()
         return self.locks[name]

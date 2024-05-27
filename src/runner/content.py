@@ -42,6 +42,7 @@ class Content:
         self.title_font = pygame.font.Font(Font.SCD4, 32)
 
         mm = MutexManager()
+        self.fast_lock = mm.get('fast')
         self.data_lock = mm.get('data')
 
         self.threshold = '1.17'
@@ -50,12 +51,22 @@ class Content:
         self.th_input_real = pygame.Rect(291 + pos[0] + self.info_pos[0], 36 + pos[1] + self.info_pos[1], 56, 22)
         self.th_active = False
 
+        self.safe_real = pygame.Rect(291+pos[0]+self.info_pos[0], 62+ pos[1]+self.info_pos[1], 78, 22)
+
         def th_event(e):
             if e.type == pygame.MOUSEBUTTONDOWN:
                 if self.th_input_real.collidepoint(e.pos):
                     self.th_active = True
                 else:
                     self.th_active = False
+                if self.safe_real.collidepoint(e.pos):
+                    if not self.fast_lock.locked():
+                        self.fast_lock.acquire()
+
+            if e.type == pygame.MOUSEBUTTONUP:
+                if self.fast_lock.locked():
+                    self.fast_lock.release()
+
             if self.th_active and e.type == pygame.KEYDOWN:
                 if e.key == pygame.K_BACKSPACE:
                     self.threshold = self.threshold[:-1]
